@@ -2,7 +2,7 @@
 #ifndef NAME_H
 #define NAME_H
 
-#include "Macro.hpp"
+#include "Macros.hpp"
 #include "Miscellaneous.hpp"
 #include <string>
 
