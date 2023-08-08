@@ -1,17 +1,13 @@
 #pragma once
-#ifndef NAME_H
-#define NAME_H
+#ifndef NAME_HPP
+#define NAME_HPP
 
 #include "Macros.hpp"
 #include "Miscellaneous.hpp"
+#include "Sex.hpp"
 #include <string>
 
 SQL_RANDOM_DATA_BEGIN
-enum class Sex {
-    MALE,
-    FEMALE
-};
-
 class Name {
 private:
     std::wstring last_name, middle_name, first_name;
@@ -88,4 +84,4 @@ const std::wstring last_names[] = {
     L"Viên", L"Vương", L"Vũ", L"Võ"};
 SQL_RANDOM_DATA_END // namespace sql_random_data
 
-#endif // end NAME_H
+#endif // end NAME_HPP
