@@ -1,28 +1,53 @@
-#	INSTRUCTIONS:
+# INSTRUCTIONS:
 # 'mingw32-make'				build executable file 'Program.exe'
-# 'mingw32-make .bin/Main.o'	build object file 'Main.o' into .bin folder
-# 'mingw32-make run'			run executable file
 # 'mingw32-make build-and-run'	build and run executable file
+# 'mingw32-make run'			run executable file
+# 'mingw32-make .bin/Main.o'	build object file 'Main.o' into .bin folder
 # 'mingw32-make clean'  		removes every .o and executable files
 
-CPP			:=	g++
-TARGET		:=	Program.exe
-ODIR		:=	.bin
-DEPS		:=	Macros.hpp	Name.hpp	Miscellaneous.hpp	Sex.hpp
-OBJS		:=	Main.o		Name.o		Miscellaneous.o
-OBJS_PATH	:=	$(patsubst %,$(ODIR)/%,$(OBJS))
+#====================================================#
+#                  EDITABLE OPTIONS                  #
+#====================================================#
+TARGET			:=	Program.exe
+BIN_DIR			:=	.bin
+SOURCES			:=	Name.cpp	Miscellaneous.cpp	Main.cpp
+HEADERS			:=	Name.hpp	Miscellaneous.hpp	Macros.hpp	Sex.hpp
 
-all:	$(OBJS)
-	$(CPP) -o $(ODIR)/$(TARGET) $(OBJS_PATH)
+# Compiler
+CXX				:=	g++
+# Flags
+CXXFLAGS		:=	-c
+LDFLAGS			:=
 
-%.o:	%.cpp	$(DEPS)
-	$(CPP) -c -o $(ODIR)/$@ $<
-$(ODIR)/%.o:	%.cpp	$(DEPS)
-	$(CPP) -c -o $@ $<
+#====================================================#
+#        DO NOT ALLOW EDITING BELOW THIS LINE        #
+#====================================================#
+
+#===< VARIABLES >=========#
+EXECUTABLE		:=	$(BIN_DIR)/$(TARGET)
+OBJECTS			:=	$(SOURCES:.cpp=.o)
+OBJECTS_PATH	:=	$(patsubst %,$(BIN_DIR)/%,$(OBJECTS))
+
+
+#===< LINKER >============#
+all:			$(EXECUTABLE)
+$(TARGET):		$(EXECUTABLE)
+$(EXECUTABLE):	$(OBJECTS_PATH)
+	$(CXX) $(LDFLAGS) -o $(EXECUTABLE) $(OBJECTS_PATH)
+
+#===< COMPILER >==========#
+%.o:			%.cpp	$(HEADERS)	| $(BIN_DIR)
+	$(CXX) $(CXXFLAGS) -o $(BIN_DIR)/$@ $<
+$(BIN_DIR)/%.o:	%.cpp	$(HEADERS)	| $(BIN_DIR)
+	$(CXX) $(CXXFLAGS) -o $@ $<
+
+#===< MISCELLANEOUS >=====#
+$(BIN_DIR):
+	mkdir $(BIN_DIR)
 
 build-and-run:	all		run
 run:
-	$(ODIR)/$(TARGET)
+	$(BIN_DIR)/$(TARGET)
 
 clean:
-	del /s /q ".\$(ODIR)\$(TARGET)" ".\$(ODIR)\*.o"
+	del /s /q ".\$(BIN_DIR)\$(TARGET)" ".\$(BIN_DIR)\*.o"

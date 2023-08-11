@@ -1,5 +1,5 @@
 # SqlRandomData
-**This repo only supports Vietnamese names**
+**This repo only supports Vietnamese**
 
 This repo is created, because when I insert data into sql using script. If I were to write thousands of lines of code, I would be too lazy to think about what cases the data might encounter. the database will need to insert a lot of data for the application to process.
 
@@ -9,20 +9,13 @@ Clone this repo to your machine
 git clone https://github.com/GeMiNiOranGe/SqlRandomData.git
 ```
 And read how to build and run below
+
 ### For `mingw32-make` (recommend)
 This instruction is for using `mingw32-make` of `msys2`
 
-Step 1: Make build folder
+Step 1: Build and run
 ```cmd
-mkdir .bin
-```
-Step 2: Build
-```cmd
-mingw32-make
-```
-Step 3: Run
-```cmd
-mingw32-make run
+mingw32-make build-and-run
 ```
 
 ### For `cmd`
@@ -38,5 +31,5 @@ g++ -o Program.exe *.o
 ```
 Step 3: Run
 ```cmd
-Program.exe
+.\Program.exe
 ```
