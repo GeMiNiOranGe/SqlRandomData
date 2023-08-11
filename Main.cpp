@@ -8,8 +8,7 @@ int main() {
     srand((int)time(NULL));
     _setmode(_fileno(stdout), _O_U16TEXT);
     int count;
-    std::wcout << L"cần bao nhiu cái tên ??? và cái deal là gỉ ???" << '\n'
-               << L"Nhập số lượng: ";
+    std::wcout << L"Input count: ";
     std::wcin >> count;
     for (size_t i = 0; i < count; i++) {
         sql_random_data::Sex _sex = static_cast<sql_random_data::Sex>(rand() % 2);
