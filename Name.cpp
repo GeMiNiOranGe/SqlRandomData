@@ -44,7 +44,7 @@ std::wstring Name::create_random_last_name() {
 
 // Randomly generate Vietnamese first and last name
 void Name::create_random_full_name(Sex _sex) {
-    short fullname_length = random(2, 5);
+    int8_t fullname_length = random(2, 5);
 
     this->first_name = create_random_first_name(_sex);
     this->last_name = create_random_last_name();
@@ -55,7 +55,7 @@ void Name::create_random_full_name(Sex _sex) {
             return create_random_first_name(_sex);
 
         std::wstring middle_name = create_random_last_name();
-        for (size_t i = 0; i < fullname_length - 3; i++)
+        for (int8_t i = 0; i < fullname_length - 3; i++)
             middle_name += L' ' + create_random_first_name(_sex);
         return middle_name;
     }();

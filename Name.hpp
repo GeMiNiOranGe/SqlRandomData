@@ -5,6 +5,7 @@
 #include "Macros.hpp"
 #include "Miscellaneous.hpp"
 #include "Sex.hpp"
+#include <cstdint>
 #include <string>
 
 SQL_RANDOM_DATA_BEGIN

@@ -10,7 +10,7 @@ int main() {
     int count;
     std::wcout << L"Input count: ";
     std::wcin >> count;
-    for (size_t i = 0; i < count; i++) {
+    for (auto i = 0; i < count; i++) {
         sql_random_data::Sex _sex = static_cast<sql_random_data::Sex>(rand() % 2);
         sql_random_data::Name _name;
         _name.create_random_full_name(_sex);

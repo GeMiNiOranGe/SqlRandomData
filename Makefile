@@ -3,51 +3,53 @@
 # 'mingw32-make build-and-run'	build and run executable file
 # 'mingw32-make run'			run executable file
 # 'mingw32-make .bin/Main.o'	build object file 'Main.o' into .bin folder
+# 'mingw32-make rebuild'		clean and subsequently compile all
 # 'mingw32-make clean'  		removes every .o and executable files
 
 #====================================================#
 #                  EDITABLE OPTIONS                  #
 #====================================================#
+HEADERS			:=	Name.hpp	Miscellaneous.hpp	Macros.hpp	Sex.hpp
+SOURCES			:=	Name.cpp	Miscellaneous.cpp	Main.cpp
 TARGET			:=	Program.exe
 BIN_DIR			:=	.bin
-SOURCES			:=	Name.cpp	Miscellaneous.cpp	Main.cpp
-HEADERS			:=	Name.hpp	Miscellaneous.hpp	Macros.hpp	Sex.hpp
 
 # Compiler
 CXX				:=	g++
 # Flags
-CXXFLAGS		:=	-c
+CXXFLAGS		:=	-c -Wall
 LDFLAGS			:=
 
 #====================================================#
 #        DO NOT ALLOW EDITING BELOW THIS LINE        #
 #====================================================#
+.PHONY: build build-and-run rebuild run clean 
 
 #===< VARIABLES >=========#
 EXECUTABLE		:=	$(BIN_DIR)/$(TARGET)
-OBJECTS			:=	$(SOURCES:.cpp=.o)
-OBJECTS_PATH	:=	$(patsubst %,$(BIN_DIR)/%,$(OBJECTS))
-
+OBJECTS			:=	$(SOURCES:%.cpp=%.o)					# Replace *.cpp into *.o file
+OBJECTS_PATH	:=	$(patsubst %,$(BIN_DIR)/%,$(OBJECTS))	# Appprefix .bin to *.o file into .bin/*.o
 
 #===< LINKER >============#
-all:			$(EXECUTABLE)
+build:			$(EXECUTABLE)
 $(TARGET):		$(EXECUTABLE)
 $(EXECUTABLE):	$(OBJECTS_PATH)
-	$(CXX) $(LDFLAGS) -o $(EXECUTABLE) $(OBJECTS_PATH)
+	@$(CXX) $(LDFLAGS) -o $(EXECUTABLE) $(OBJECTS_PATH)
 
 #===< COMPILER >==========#
 %.o:			%.cpp	$(HEADERS)	| $(BIN_DIR)
-	$(CXX) $(CXXFLAGS) -o $(BIN_DIR)/$@ $<
+	@$(CXX) $(CXXFLAGS) -o $(BIN_DIR)/$@ $<
 $(BIN_DIR)/%.o:	%.cpp	$(HEADERS)	| $(BIN_DIR)
-	$(CXX) $(CXXFLAGS) -o $@ $<
+	@$(CXX) $(CXXFLAGS) -o $@ $<
 
 #===< MISCELLANEOUS >=====#
-$(BIN_DIR):
-	mkdir $(BIN_DIR)
-
-build-and-run:	all		run
+rebuild:		clean	build
+build-and-run:	build	run
 run:
-	$(BIN_DIR)/$(TARGET)
+	@$(BIN_DIR)/$(TARGET)
+
+$(BIN_DIR):
+	@mkdir $(BIN_DIR)
 
 clean:
-	del /s /q ".\$(BIN_DIR)\$(TARGET)" ".\$(BIN_DIR)\*.o"
+	@del /s /q ".\$(BIN_DIR)\$(TARGET)" ".\$(BIN_DIR)\*.o"
