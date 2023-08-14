@@ -32,24 +32,29 @@ OBJECTS_PATH	:=	$(patsubst %,$(BIN_DIR)/%,$(OBJECTS))	# Appprefix .bin to *.o fi
 
 #===< LINKER >============#
 build:			$(EXECUTABLE)
-$(TARGET):		$(EXECUTABLE)
 $(EXECUTABLE):	$(OBJECTS_PATH)
 	@$(CXX) $(LDFLAGS) -o $(EXECUTABLE) $(OBJECTS_PATH)
+	@echo Linked file - $(subst /,\,$(CURDIR)/$(EXECUTABLE))
+	@echo Build successful!!!
 
 #===< COMPILER >==========#
-%.o:			%.cpp	$(HEADERS)	| $(BIN_DIR)
-	@$(CXX) $(CXXFLAGS) -o $(BIN_DIR)/$@ $<
 $(BIN_DIR)/%.o:	%.cpp	$(HEADERS)	| $(BIN_DIR)
 	@$(CXX) $(CXXFLAGS) -o $@ $<
+	@echo Compiled file - $(subst /,\,$(CURDIR)/$@)
+%.o:			%.cpp	$(HEADERS)	| $(BIN_DIR)
+	@$(CXX) $(CXXFLAGS) -o $(BIN_DIR)/$@ $<
+	@echo Compiled file - $(subst /,\,$(CURDIR)/$(BIN_DIR)/$@)
 
 #===< MISCELLANEOUS >=====#
 rebuild:		clean	build
 build-and-run:	build	run
 run:
-	@$(BIN_DIR)/$(TARGET)
+	@$(EXECUTABLE)
 
 $(BIN_DIR):
 	@mkdir $(BIN_DIR)
 
 clean:
-	@del /s /q ".\$(BIN_DIR)\$(TARGET)" ".\$(BIN_DIR)\*.o"
+	@del /s /q						\
+		$(subst /,\,$(EXECUTABLE))	\
+		$(subst /,\,$(OBJECTS_PATH))
