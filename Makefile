@@ -46,15 +46,21 @@ $(BIN_DIR)/%.o:	%.cpp	$(HEADERS)	| $(BIN_DIR)
 	@echo Compiled file - $(subst /,\,$(CURDIR)/$(BIN_DIR)/$@)
 
 #===< MISCELLANEOUS >=====#
+$(BIN_DIR):
+	@mkdir $(BIN_DIR)
+	@echo Created directory - $(subst /,\,$(CURDIR)/$(BIN_DIR))
+
 rebuild:		clean	build
 build-and-run:	build	run
 run:
 	@$(EXECUTABLE)
 
-$(BIN_DIR):
-	@mkdir $(BIN_DIR)
-
 clean:
-	@del /s /q						\
+	@del /s							\
 		$(subst /,\,$(EXECUTABLE))	\
 		$(subst /,\,$(OBJECTS_PATH))
+	@echo Clean done
+
+remove-dir:
+	@rmdir /s /q $(BIN_DIR)
+	@echo Removed directory - $(subst /,\,$(CURDIR)/$(BIN_DIR))
