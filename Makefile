@@ -9,26 +9,30 @@
 #====================================================#
 #                  EDITABLE OPTIONS                  #
 #====================================================#
-HEADERS			:=	Name.hpp	Miscellaneous.hpp	Macros.hpp	Sex.hpp
-SOURCES			:=	Name.cpp	Miscellaneous.cpp	Main.cpp
-TARGET			:=	Program.exe
-BIN_DIR			:=	.bin
-
 # Compiler
 CXX				:=	g++
 # Flags
-CXXFLAGS		:=	-c -Wall
+CXXFLAGS		:=	-c -Wall -I./sql_random_data/include
 LDFLAGS			:=
+
+TARGET			:=	program.exe
+BIN_DIR			:=	bin
+
+HEADER_DIR		:=	sql_random_data/include
+SOURCE_DIR		:=	sql_random_data/lib
+
+HEADERS			:=	$(wildcard $(HEADER_DIR)/*.hpp)
+SOURCES			:=	$(wildcard $(SOURCE_DIR)/*.cpp)	$(BIN_DIR)/main.cpp
 
 #====================================================#
 #        DO NOT ALLOW EDITING BELOW THIS LINE        #
 #====================================================#
-.PHONY: build build-and-run rebuild run clean 
+.PHONY: build build-and-run rebuild run clean remove-dir
 
 #===< VARIABLES >=========#
 EXECUTABLE		:=	$(BIN_DIR)/$(TARGET)
-OBJECTS			:=	$(SOURCES:%.cpp=%.o)					# Replace *.cpp into *.o file
-OBJECTS_PATH	:=	$(patsubst %,$(BIN_DIR)/%,$(OBJECTS))	# Appprefix .bin to *.o file into .bin/*.o
+OBJECTS			:=	$(SOURCES:%.cpp=%.o)								# Replace *.cpp into *.o file
+OBJECTS_PATH	:=	$(patsubst $(SOURCE_DIR)/%,$(BIN_DIR)/%,$(OBJECTS))	# Appprefix .bin to *.o file into .bin/*.o
 
 #===< LINKER >============#
 build:			$(EXECUTABLE)
@@ -38,11 +42,12 @@ $(EXECUTABLE):	$(OBJECTS_PATH)
 	@echo Build successful!!!
 
 #===< COMPILER >==========#
-$(BIN_DIR)/%.o:	%.cpp	$(HEADERS)	| $(BIN_DIR)
+$(BIN_DIR)/%.o:	$(SOURCE_DIR)/%.cpp	$(HEADERS)	| $(BIN_DIR)
 	@$(CXX) $(CXXFLAGS) -o $@ $<
 	@echo Compiled file - $(subst /,\,$(CURDIR)/$@)
-%.o:			%.cpp	$(HEADERS)	| $(BIN_DIR)
-	@$(CXX) $(CXXFLAGS) -o $(BIN_DIR)/$@ $<
+
+$(BIN_DIR)/main.o:	main.cpp		$(HEADERS)	| $(BIN_DIR)
+	@$(CXX) $(CXXFLAGS) -o $@ $<
 	@echo Compiled file - $(subst /,\,$(CURDIR)/$(BIN_DIR)/$@)
 
 #===< MISCELLANEOUS >=====#

@@ -1,4 +1,4 @@
-#include "Name.hpp"
+#include <name.hpp>
 
 SQL_RANDOM_DATA_BEGIN
 Name::Name() {

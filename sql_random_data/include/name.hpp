@@ -2,11 +2,12 @@
 #ifndef NAME_HPP
 #define NAME_HPP
 
-#include "Macros.hpp"
-#include "Miscellaneous.hpp"
-#include "Sex.hpp"
 #include <cstdint>
 #include <string>
+
+#include <macros.hpp>
+#include <miscellaneous.hpp>
+#include <sex.hpp>
 
 SQL_RANDOM_DATA_BEGIN
 class Name {

@@ -1,8 +1,9 @@
-#include "Name.hpp"
 #include <ctime>
 #include <fcntl.h>
 #include <io.h>
 #include <iostream>
+
+#include <name.hpp>
 
 int main() {
     srand((int)time(NULL));

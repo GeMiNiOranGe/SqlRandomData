@@ -2,7 +2,7 @@
 #ifndef SEX_HPP
 #define SEX_HPP
 
-#include "Macros.hpp"
+#include <macros.hpp>
 
 SQL_RANDOM_DATA_BEGIN
 enum class Sex {
