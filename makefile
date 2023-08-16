@@ -1,28 +1,28 @@
 # INSTRUCTIONS:
-# 'mingw32-make'				build executable file 'Program.exe'
-# 'mingw32-make build-and-run'	build and run executable file
-# 'mingw32-make run'			run executable file
-# 'mingw32-make .bin/Main.o'	build object file 'Main.o' into .bin folder
-# 'mingw32-make rebuild'		clean and subsequently compile all
-# 'mingw32-make clean'  		removes every .o and executable files
+# 'mingw32-make'                build executable file 'Program.exe'
+# 'mingw32-make build-and-run'  build and run executable file
+# 'mingw32-make run'            run executable file
+# 'mingw32-make .bin/Main.o'    build object file 'Main.o' into .bin folder
+# 'mingw32-make rebuild'        clean and subsequently compile all
+# 'mingw32-make clean'          removes every .o and executable files
 
 #====================================================#
 #                  EDITABLE OPTIONS                  #
 #====================================================#
 # Compiler
-CXX				:=	g++
+CXX         := g++
 # Flags
-CXXFLAGS		:=	-c -Wall -I./sql_random_data/include
-LDFLAGS			:=
+CXXFLAGS    := -c -Wall -I./sql_random_data/include
+LDFLAGS     :=
 
-TARGET			:=	program.exe
-BIN_DIR			:=	bin
+TARGET	    := program.exe
+BIN_DIR	    := bin
 
-HEADER_DIR		:=	sql_random_data/include
-SOURCE_DIR		:=	sql_random_data/lib
+HEADER_DIR  := sql_random_data/include
+SOURCE_DIR  := sql_random_data/lib
 
-HEADERS			:=	$(wildcard $(HEADER_DIR)/*.hpp)
-SOURCES			:=	$(wildcard $(SOURCE_DIR)/*.cpp)	$(BIN_DIR)/main.cpp
+HEADERS	    := $(wildcard $(HEADER_DIR)/*.hpp)
+SOURCES	    := $(wildcard $(SOURCE_DIR)/*.cpp) $(BIN_DIR)/main.cpp
 
 #====================================================#
 #        DO NOT ALLOW EDITING BELOW THIS LINE        #
@@ -30,9 +30,9 @@ SOURCES			:=	$(wildcard $(SOURCE_DIR)/*.cpp)	$(BIN_DIR)/main.cpp
 .PHONY: build build-and-run rebuild run clean remove-dir
 
 #===< VARIABLES >=========#
-EXECUTABLE		:=	$(BIN_DIR)/$(TARGET)
-OBJECTS			:=	$(SOURCES:%.cpp=%.o)								# Replace *.cpp into *.o file
-OBJECTS_PATH	:=	$(patsubst $(SOURCE_DIR)/%,$(BIN_DIR)/%,$(OBJECTS))	# Appprefix .bin to *.o file into .bin/*.o
+EXECUTABLE  := $(BIN_DIR)/$(TARGET)
+OBJECTS     := $(SOURCES:%.cpp=%.o)                                # Replace *.cpp into *.o file
+OBJECTS_PATH:= $(patsubst $(SOURCE_DIR)/%,$(BIN_DIR)/%,$(OBJECTS)) # Appprefix .bin to *.o file into .bin/*.o
 
 #===< LINKER >============#
 build:			$(EXECUTABLE)
