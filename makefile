@@ -4,22 +4,26 @@
 # 'mingw32-make run'            run executable file
 # 'mingw32-make .bin/Main.o'    build object file 'Main.o' into .bin folder
 # 'mingw32-make rebuild'        clean and subsequently compile all
-# 'mingw32-make clean'          removes every .o and executable files
+# 'mingw32-make clean'          removes every objects and executable files
 
 #====================================================#
 #                  EDITABLE OPTIONS                  #
 #====================================================#
 # Compiler
 CXX         := g++
-# Flags
-CXXFLAGS    := -c -Wall -I./sql_random_data/include
-LDFLAGS     :=
 
 TARGET	    := program.exe
 BIN_DIR	    := bin
 
 HEADER_DIR  := sql_random_data/include
 SOURCE_DIR  := sql_random_data/lib
+
+#====================================================#
+#     YOU CAN EDIT IF YOU KNOW WHAT YOU'RE DOING     #
+#====================================================#
+# Flags
+CXXFLAGS    := -c -Wall -I./$(HEADER_DIR)
+LDFLAGS     :=
 
 HEADERS	    := $(wildcard $(HEADER_DIR)/*.hpp)
 SOURCES	    := $(wildcard $(SOURCE_DIR)/*.cpp) $(BIN_DIR)/main.cpp
@@ -48,7 +52,7 @@ $(BIN_DIR)/%.o:	$(SOURCE_DIR)/%.cpp	$(HEADERS)	| $(BIN_DIR)
 
 $(BIN_DIR)/main.o:	main.cpp		$(HEADERS)	| $(BIN_DIR)
 	@$(CXX) $(CXXFLAGS) -o $@ $<
-	@echo Compiled file - $(subst /,\,$(CURDIR)/$(BIN_DIR)/$@)
+	@echo Compiled file - $(subst /,\,$(CURDIR)/$@)
 
 #===< MISCELLANEOUS >=====#
 $(BIN_DIR):

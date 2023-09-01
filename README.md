@@ -23,13 +23,13 @@ If you aren't using `mingw32-make`, you can use `command prompt`
 
 Step 1: Compile object file
 ```cmd
-g++ -c *.cpp
+g++ -c -Wall -I./sql_random_data/include .\sql_random_data\lib\*.cpp .\main.cpp
 ```
-Step 2: Link object file to `Program.exe`
+Step 2: Link object file to `program.exe`
 ```cmd
-g++ -o Program.exe *.o
+g++ -o program.exe *.o
 ```
 Step 3: Run
 ```cmd
-.\Program.exe
+.\program.exe
 ```
