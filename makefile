@@ -10,23 +10,24 @@
 #                  EDITABLE OPTIONS                  #
 #====================================================#
 # Compiler
-CXX         := g++
+CXX          := g++
+DEBUG        := -g
 
-TARGET	    := program.exe
-BIN_DIR	    := bin
+TARGET	     := program.exe
+BIN_DIR	     := bin
 
-HEADER_DIR  := sql_random_data/include
-SOURCE_DIR  := sql_random_data/lib
+HEADER_DIR   := sql_random_data/include
+SOURCE_DIR   := sql_random_data/lib
 
 #====================================================#
 #     YOU CAN EDIT IF YOU KNOW WHAT YOU'RE DOING     #
 #====================================================#
 # Flags
-CXXFLAGS    := -c -Wall -I./$(HEADER_DIR)
-LDFLAGS     :=
+CXXFLAGS     := -c -Wall $(DEBUG) -I./$(HEADER_DIR)
+LDFLAGS      :=
 
-HEADERS	    := $(wildcard $(HEADER_DIR)/*.hpp)
-SOURCES	    := $(wildcard $(SOURCE_DIR)/*.cpp) $(BIN_DIR)/main.cpp
+HEADERS	     := $(wildcard $(HEADER_DIR)/*.hpp)
+SOURCES	     := $(wildcard $(SOURCE_DIR)/*.cpp) $(BIN_DIR)/main.cpp
 
 #====================================================#
 #        DO NOT ALLOW EDITING BELOW THIS LINE        #
@@ -34,9 +35,9 @@ SOURCES	    := $(wildcard $(SOURCE_DIR)/*.cpp) $(BIN_DIR)/main.cpp
 .PHONY: build build-and-run rebuild run clean remove-dir
 
 #===< VARIABLES >=========#
-EXECUTABLE  := $(BIN_DIR)/$(TARGET)
-OBJECTS     := $(SOURCES:%.cpp=%.o)                                # Replace *.cpp into *.o file
-OBJECTS_PATH:= $(patsubst $(SOURCE_DIR)/%,$(BIN_DIR)/%,$(OBJECTS)) # Appprefix .bin to *.o file into .bin/*.o
+EXECUTABLE   := $(BIN_DIR)/$(TARGET)
+OBJECTS      := $(SOURCES:%.cpp=%.o)                                # Replace *.cpp into *.o file
+OBJECTS_PATH := $(patsubst $(SOURCE_DIR)/%,$(BIN_DIR)/%,$(OBJECTS)) # Appprefix .bin to *.o file into .bin/*.o
 
 #===< LINKER >============#
 build:			$(EXECUTABLE)
