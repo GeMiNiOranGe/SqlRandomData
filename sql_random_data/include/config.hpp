@@ -59,3 +59,21 @@ const std::wstring last_names[] = {
     L"Quách",
     L"Trần", L"Trương", L"Tô", L"Trịnh", L"Tống",
     L"Viên", L"Vương", L"Vũ", L"Võ"};
+
+const std::wstring ethnicities[] = {
+    L"Bana", L"Bố Y", L"Brâu", L"Bru-Vân Kiều",
+    L"Chăm", L"Chơ-ro", L"Chu-ru", L"Chứt", L"Co", L"Cơ-ho", L"Cờ Lao", L"Cơ-tu", L"Cống",
+    L"Dao",
+    L"Ê-đê",
+    L"Gia rai", L"Giáy", L"Gié-Triêng",
+    L"Hà Nhì", L"Hoa", L"Hrê",
+    L"Kháng", L"Khmer", L"Khơ mú", L"Kinh",
+    L"La Chí", L"La Ha", L"La Hủ", L"Lào", L"Lô Lô", L"Lự",
+    L"Mạ", L"Mảng", L"Mnông", L"HMông", L"Mường",
+    L"Ngái", L"Nùng",
+    L"Ơ Đu",
+    L"Pà Thẻn", L"Phù Lá", L"Pu Péo",
+    L"Ra-glai", L"Rơ măm",
+    L"Sán Chay", L"Sán Dìu", L"Si La",
+    L"Tà-ôi", L"Tày", L"Thái", L"Thổ",
+    L"Xinh-mun", L"Xơ-Đăng", L"Xtiêng"};

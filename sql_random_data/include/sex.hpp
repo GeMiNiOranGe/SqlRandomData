@@ -6,8 +6,8 @@
 
 SQL_RANDOM_DATA_BEGIN
 enum class Sex {
-    MALE,
-    FEMALE
+    FEMALE,
+    MALE
 };
 SQL_RANDOM_DATA_END
 
