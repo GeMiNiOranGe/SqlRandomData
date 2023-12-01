@@ -16,9 +16,6 @@ private:
     std::wstring last_name, middle_name, first_name;
 
 public:
-    Name();
-    ~Name();
-
     const std::wstring &get_last_name();
     const std::wstring &get_middle_name();
     const std::wstring &get_first_name();

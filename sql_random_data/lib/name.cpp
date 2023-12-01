@@ -1,14 +1,6 @@
 #include <name.hpp>
 
 SQL_RANDOM_DATA_BEGIN
-Name::Name() {
-    this->last_name = L"";
-    this->middle_name = L"";
-    this->first_name = L"";
-}
-Name::~Name() {
-}
-
 const std::wstring &Name::get_last_name() {
     return this->last_name;
 }

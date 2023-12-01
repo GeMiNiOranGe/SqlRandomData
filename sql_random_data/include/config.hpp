@@ -1,5 +1,8 @@
 #include <string>
 
+#include <macros.hpp>
+
+SQL_RANDOM_DATA_BEGIN
 const std::wstring male_first_names[] = {
     L"Anh", L"An",
     L"Ân", L"Ấn",
@@ -12,7 +15,7 @@ const std::wstring male_first_names[] = {
     L"Khanh", L"Khánh", L"Kim", L"Khoa", L"Khải", L"Khôi", L"Kiến", L"Kỳ", L"Khải", L"Khang", L"Kiên", L"Khiêm", L"Kiệt",
     L"Linh", L"Lam", L"Lâm", L"Long", L"Luân", L"Lộc", L"Lợi",
     L"Minh", L"Mẫn", L"Mạnh",
-    L"Nguyên", L"Nhân", L"Nghĩa", L"Nam", L"Ngọc", L"Nhật", L"Ngân", L"Nhựt",
+    L"Nguyên", L"Nhân", L"Nghĩa", L"Nam", L"Ngọc", L"Nhật", L"Nhựt",
     L"Phúc", L"Phát", L"Phương", L"Phước", L"Pháp", L"Phi", L"Phong", L"Phú",
     L"Quang", L"Quảng", L"Quân", L"Quốc", L"Quan",
     L"Sơn", L"Sang",
@@ -38,7 +41,7 @@ const std::wstring female_first_names[] = {
     L"Phương", L"Phượng", L"Phụng", L"Phối",
     L"Quỳnh", L"Quyên",
     L"San",
-    L"Thương", L"Thảo", L"Trang", L"Thư", L"Thơ", L"Trân", L"Trà", L"Trâm", L"Thy", L"Trúc", L"Tiên", L"Thúy", L"Thùy", L"Thủy", L"Tâm", L"Tú", L"Tuyền", L"Thanh", L"Trinh", L"Tuyết", L"Tường", L"Thắm", L"Thi", L"Tuệ", L"Thục", L"Tố",
+    L"Thương", L"Thảo", L"Trang", L"Thư", L"Thơ", L"Trân", L"Trà", L"Trâm", L"Thy", L"Trúc", L"Tiên", L"Thúy", L"Thùy", L"Thủy", L"Tâm", L"Tú", L"Tuyền", L"Thanh", L"Trinh", L"Tuyết", L"Tường", L"Thắm", L"Thi", L"Tuệ", L"Thục", L"Tố", L"Thiên",
     L"Uyên",
     L"Vy", L"Vân",
     L"Xuân",
@@ -77,3 +80,5 @@ const std::wstring ethnicities[] = {
     L"Sán Chay", L"Sán Dìu", L"Si La",
     L"Tà-ôi", L"Tày", L"Thái", L"Thổ",
     L"Xinh-mun", L"Xơ-Đăng", L"Xtiêng"};
+
+SQL_RANDOM_DATA_END
