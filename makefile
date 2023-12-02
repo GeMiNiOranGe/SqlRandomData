@@ -12,6 +12,7 @@
 # Compiler
 CXX          := g++
 DEBUG        := -g
+COMPILER_VER := --std=c++11
 
 TARGET	     := program.exe
 BIN_DIR	     := bin
@@ -23,7 +24,7 @@ SOURCE_DIR   := sql_random_data/lib
 #     YOU CAN EDIT IF YOU KNOW WHAT YOU'RE DOING     #
 #====================================================#
 # Flags
-CXXFLAGS     := -c -Wall $(DEBUG) -I./$(HEADER_DIR)
+CXXFLAGS     := -c -Wall $(DEBUG) -I./$(HEADER_DIR) $(COMPILER_VER)
 LDFLAGS      :=
 
 HEADERS	     := $(wildcard $(HEADER_DIR)/*.hpp)
