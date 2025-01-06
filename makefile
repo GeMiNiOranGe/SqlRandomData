@@ -17,8 +17,8 @@ COMPILER_VER := --std=c++11
 TARGET	     := program.exe
 BIN_DIR	     := bin
 
-HEADER_DIR   := sql_random_data/include
-SOURCE_DIR   := sql_random_data/lib
+HEADER_DIR   := include
+SOURCE_DIR   := lib
 
 #====================================================#
 #     YOU CAN EDIT IF YOU KNOW WHAT YOU'RE DOING     #
