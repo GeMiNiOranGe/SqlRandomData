@@ -28,7 +28,7 @@ CXXFLAGS     := -c -Wall $(DEBUG) -I./$(HEADER_DIR) $(COMPILER_VER)
 LDFLAGS      :=
 
 HEADERS	     := $(wildcard $(HEADER_DIR)/*.hpp)
-SOURCES	     := $(wildcard $(SOURCE_DIR)/*.cpp) $(BIN_DIR)/main.cpp
+SOURCES	     := $(wildcard $(SOURCE_DIR)/*.cpp)
 
 #====================================================#
 #        DO NOT ALLOW EDITING BELOW THIS LINE        #
@@ -49,10 +49,6 @@ $(EXECUTABLE):	$(OBJECTS_PATH)
 
 #===< COMPILER >==========#
 $(BIN_DIR)/%.o:	$(SOURCE_DIR)/%.cpp	$(HEADERS)	| $(BIN_DIR)
-	@$(CXX) $(CXXFLAGS) -o $@ $<
-	@echo Compiled file - $(subst /,\,$(CURDIR)/$@)
-
-$(BIN_DIR)/main.o:	main.cpp		$(HEADERS)	| $(BIN_DIR)
 	@$(CXX) $(CXXFLAGS) -o $@ $<
 	@echo Compiled file - $(subst /,\,$(CURDIR)/$@)
 
